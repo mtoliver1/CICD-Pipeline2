@@ -3,20 +3,20 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = 'mtolv/java-http-server:latest'
-        SONARQUBE_SERVER = 'http://sonarqube:9000'
+        SONARQUBE_SERVER = 'http://sonarqube:9001'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/mtoliver1/CICD-Pipeline.git'
+                git 'https://github.com/mtoliver1/CICD-Pipeline2.git'
             }
         }
 
         stage('Build (Java 17)') {
             steps {
                 script {
-                    docker.image('maven:3.9.6-eclipse-temurin-17').inside('--network cicd-network') {
+                    docker.image('maven:3.9.6-eclipse-temurin-17').inside('--network cicd-network2') {
                         sh 'mvn clean package'
                     }
                 }
