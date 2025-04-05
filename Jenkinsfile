@@ -37,7 +37,7 @@ pipeline {
             steps {
                 script {
                     withDockerContainer(image: 'maven:3.9.6-eclipse-temurin-21', args: '--network cicd-network2') {
-                        withSonarQubeEnv('local-sonarqube') {
+                        withSonarQubeEnv('SonarQube') {
                             withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
                                 sh 'mvn sonar:sonar -Dsonar.login=$SONAR_TOKEN'
                             }
