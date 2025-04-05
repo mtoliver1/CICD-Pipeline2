@@ -9,11 +9,11 @@ import com.sun.net.httpserver.HttpExchange;
 
 public class App {
     public static void main(String[] args) throws IOException {
-        HttpServer server = HttpServer.create(new InetSocketAddress(8082), 0);
+        HttpServer server = HttpServer.create(new InetSocketAddress(8085), 0);
         server.createContext("/", new MyHandler());
         server.setExecutor(null);
         server.start();
-        System.out.println("Server started on port 8082");
+        System.out.println("Server started on port 8085");
     }
 
     static class MyHandler implements HttpHandler {
